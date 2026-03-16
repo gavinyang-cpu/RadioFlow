@@ -1,0 +1,53 @@
+name: RadioFlow
+options:
+  bundleIdPrefix: com.radioflow
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.9"
+    GENERATE_INFOPLIST_FILE: false
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+
+targets:
+  RadioFlow:
+    type: application
+    platform: macOS
+    sources:
+      - path: RadioFlow
+        type: group
+        excludes:
+          - "*.xcassets"
+      - path: RadioFlow/Assets.xcassets
+        type: file
+    settings:
+      base:
+        INFOPLIST_FILE: RadioFlow/Info.plist
+        PRODUCT_BUNDLE_IDENTIFIER: com.radioflow.app
+        TARGETED_DEVICE_FAMILY: "2"
+        SWIFT_VERSION: "5.9"
+        CODE_SIGN_IDENTITY: "-"
+        CODE_SIGN_STYLE: Manual
+        ENABLE_HARDENED_RUNTIME: NO
+        COMBINE_HIDPI_IMAGES: YES
+    info:
+      path: RadioFlow/Info.plist
+      properties:
+        CFBundleName: RadioFlow
+        CFBundleDisplayName: RadioFlow
+        CFBundleIdentifier: $(PRODUCT_BUNDLE_IDENTIFIER)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundlePackageType: APPL
+        CFBundleExecutable: $(EXECUTABLE_NAME)
+        LSMinimumSystemVersion: $(MACOSX_DEPLOYMENT_TARGET)
+        NSPrincipalClass: NSApplication
+        NSHighResolutionCapable: true
+        NSMicrophoneUsageDescription: "RadioFlow needs access to record audio from radio stations."
